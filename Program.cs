@@ -1,4 +1,4 @@
-
+using Mission4;
 ﻿using System.Formats.Tar;
 class Program
 {
@@ -24,22 +24,22 @@ class Program
         // Ask each player for their choice 
         while (!gameOver)
         {
-            gt.printBoard(board);
+            gt.PrintBoard(board);
 
             Console.WriteLine($" Player {currentPlayer}, choose your position 1 - 9: ");
             string choice = Console.ReadLine();
 
             if (updateBoard(board, choice, currentPlayer))
             {
-                if (gt.checkWin(board, currentPlayer))
+                if (gt.CheckWin(board))
                 {
-                    gt.printBoard(board);
+                    gt.PrintBoard(board);
                     Console.WriteLine($" Player {currentPlayer} wins! Congratulations!");
                     gameOver = true;
                 }
-                else if (gt.checkDraw(board))
+                else if (gt.CheckDraw(board))
                 {
-                    gt.printBoard(board);
+                    gt.PrintBoard(board);
                     Console.WriteLine("It's a draw!");
                     gameOver = true;
                 }
