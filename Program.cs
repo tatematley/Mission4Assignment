@@ -1,21 +1,77 @@
-﻿//using System.ComponentModel;
 
-//1)
-//The “Driver” class (the Program.cs class with the main method where the program begins) will:
-//• Welcome the user to the game
-//• Create a game board array to store the players’ choices
-//• Ask each player in turn for their choice and update the game board array
-//• Print the board by calling the method in the supporting class
-//• Check for a winner by calling the method in the supporting class, and notify the players when a win has occurred and which player won the game
+﻿using System.Formats.Tar;
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Welcome the user 
+        Console.WriteLine("Welcome to our Tic-Tac-Toe game!");
 
-//2)
-//The supporting class (with whichever name you choose) will:
-//• Receive the “board” array from the driver class
-//• Contain a method that prints the board based on the information passed to it
-//	- display 3x3 with underscores, X's, & O's
-//• Contain a method that receives the game board array as input and returns if there is a winner and who it was
-//	- check for a win
+        // Create the game board 
+        string[,] board =
+        {
+            { "1", "2", "3" },
+            { "4", "5", "6" },
+            { "7", "8", "9" },
+        };
 
-//public void PrintBoard(array gameboard)
+        // Assign players 
+        char currentPlayer = 'X';
+        bool gameOver = false;
 
-//public bool CheckWin(array gamboard)
+        gameTools gt = new gameTools();
+
+        // Ask each player for their choice 
+        while (!gameOver)
+        {
+            gt.printBoard(board);
+
+            Console.WriteLine($" Player {currentPlayer}, choose your position 1 - 9: ");
+            string choice = Console.ReadLine();
+
+            if (updateBoard(board, choice, currentPlayer))
+            {
+                if (gt.checkWin(board, currentPlayer))
+                {
+                    gt.printBoard(board);
+                    Console.WriteLine($" Player {currentPlayer} wins! Congratulations!");
+                    gameOver = true;
+                }
+                else if (gt.checkDraw(board))
+                {
+                    gt.printBoard(board);
+                    Console.WriteLine("It's a draw!");
+                    gameOver = true;
+                }
+                else
+                {
+                    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid move! please try again!");
+            }
+        }
+    }
+
+
+    static bool updateBoard(string[,] board, string choice, char currentPlayer)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                // check is position is available 
+                if (board[i, j] == choice)
+                {
+                    board[i, j] = currentPlayer.ToString();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
