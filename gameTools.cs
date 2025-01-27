@@ -69,20 +69,19 @@ namespace Mission4
         
         public bool CheckDraw(string[,] gameBoard)
         {
-            //// check for a draw 
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    for (int j = 0; j < 3; j++)
-            //    {
-            //        if (gameBoard[i, j] != "X" && gameBoard[i, j] != "O")
-            //        {
-            //            Console.WriteLine("Draw");
-            //            return true;
-            //        }
-            //    }
-            //}
+            // check for a draw 
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (gameBoard[i, j] != "X" && gameBoard[i, j] != "O")
+                    {
+                        return false; // if an empty cell is found, return false
+                    }
+                }
+            }
 
-            return false;
+            return true; // no empty cells and no wins
         }
     }
 }
