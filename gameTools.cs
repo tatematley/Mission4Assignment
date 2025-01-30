@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 //• Receive the “board” array from the driver class
 //• Contain a method that prints the board based on the information passed to it
-//	- display 3x3 with underscores, X's, & O's
+//	- display 3x3 with numbers, X's, & O's
 //• Contain a method that receives the game board array as input and returns if there is a winner and who it was
 //	- check for a win
 
@@ -16,7 +16,7 @@ namespace Mission4
     {
         public void PrintBoard(string[,] gameBoard)
         {
-            Console.WriteLine("PrintBoard called");
+            //Console.WriteLine("PrintBoard called"); //for testing
             // print the numbered spots
             for (int i = 0; i < 3; i++)
             {
@@ -30,7 +30,7 @@ namespace Mission4
 
         public bool CheckWin(string[,] gameBoard)
         {
-            Console.WriteLine("CheckWin called");
+            //Console.WriteLine("CheckWin called"); //for testing
 
             // check rows for three in a row
             for (int i = 0; i < 3; i++)
